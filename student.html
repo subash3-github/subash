@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1 id="head">STUDENT DATABASE</h1>
+    <h2 id="h2">DATA ENTRY</h2>
+</head>
+<style>
+    #head{
+        text-align: center;
+        color:red;
+    }
+    #h2{
+        text-align: center;
+        color: green;
+    }
+    #center{
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="center">
+<form id="Main">
+    <label>Name</label><br>
+    <input name="name" type="text" id="name"><br><br>
+    <label>Roll number</label><br>
+    <input name="rno" type="text" id="rno"><br><br>
+    <label>D.O.B</label><br>
+    <input name="dob" type="date" id="dob"><br><br>
+    <label>Department</label><br>
+    <input name="dept" type="text" id="dept"><br><br>
+    <label>Year of studying</label><br>
+    <input name="year" type="text" id="year"><br>
+    <br>
+    <button type="submit" id="Submit" onclick="working(event)" >Submit</button>
+    <button type="s" id="St" onclick="work(event)" >Sub</button>
+    <label id="new"></label>
+   </form></div>
+   <script>
+  function working(event) {
+  event.preventDefault();
+  const formdata = new FormData(document.querySelector("#Main"));
+  //console.log(formdata.get("name"));
+  const data = Object.fromEntries(formdata);
+  //console.log(data);
+  fetch("http://locolhost:3500/data",{
+    //mode: 'no-cors',
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then(res => res.json())
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e))
+};
+   </script>
+    
+    <script src="student.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Input Form</title>
+</head>
+<body>
+  <form id="inputForm" action="/add-item" method="post">
+    <input type="text" name="text" placeholder="Enter text">
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('inputForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const text = formData.get('text');
+
+      const response = await fetch('http://locolhost:5500/api/info', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text })
+      });
+
+      const data = await response.json();
+      console.log(data);
+    });
+  </script>
+</body>
+</html> -->
