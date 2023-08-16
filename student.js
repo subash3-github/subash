@@ -41,7 +41,7 @@ function work(event) {
 }
 app.use(bodyparser.json());
 
-app.post("http://locolhost:3500/data", (req, res) => {
+app.post("/data", (req, res) => {
   res.send("request arrived");
   console.log("request arrived");
   const database = new datamod({
