@@ -22,8 +22,9 @@
 </style>
 <body>
     <div id="center">
-<form id="Main" action="https://render-5ym5.onrender.com/data">
-    <label>Name</label><br>
+ <form id="Main" action="https://render-5ym5.onrender.com/data" method="POST"> 
+  <!-- <form id="Main"> -->
+  <label>Name</label><br>
     <input name="name" type="text" id="name"><br><br>
     <label>Roll number</label><br>
     <input name="rno" type="text" id="rno"><br><br>
@@ -35,29 +36,29 @@
     <input name="year" type="text" id="year"><br>
     <br>
     <button type="submit" id="Submit" >Submit</button>
-    <!-- <button type="s" id="St" onclick="work(event)" >Sub</button> -->
+     <!-- <button type="s" id="St" onclick="work(event)" >Sub</button> -->
     <label id="new"></label>
    </form></div>
-   <script>
-//   function working(event) {
-//   event.preventDefault();
-//   const formdata = new FormData(document.querySelector("#Main"));
-//   //console.log(formdata.get("name"));
-//   const data = Object.fromEntries(formdata);
-//   //console.log(data);
-//   fetch("http://locolhost:3500/data",{
-//     //mode: 'no-cors',
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//   })
-//     .then(res => res.json())
-//     .then((data) => console.log(data))
-//     .catch((e) => console.log(e))
-// };
-   </script>
+   <!-- <script>
+  function working(event) {
+  event.preventDefault();
+  const formdata = new FormData(document.querySelector("#Main"));
+  //console.log(formdata.get("name"));
+  const data = Object.fromEntries(formdata);
+  //console.log(data);
+  fetch("https://render-5ym5.onrender.com/data",{
+    //mode: 'no-cors',
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then(res => res.json())
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e))
+};
+   </script> -->
     
     <!-- <script src="student.js"></script> -->
 </body>
