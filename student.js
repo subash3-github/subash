@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 app.use(express.urlencoded({ extended: "true" }));
 app.use(express.json());
+const path = require("path");
 const port = 3500;
 const mongo_url =
   "mongodb+srv://subash:subash482@sensor.v5itlge.mongodb.net/?retryWrites=true&w=majority";
@@ -29,17 +30,13 @@ const typ = new mongoose.Schema({
 });
 
 const datamod = new mongoose.model("model", typ);
-// app.use(
-//   bodyparser.urlencoded({
-//     extended: true,
-//   })
-// );
-//fetching data to server in formdata format
-// function work(event) {
-//   event.preventDefault();
-//   console.log("ya its work");
-// }
 app.use(bodyparser.json());
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "student.html"));
+});
+app.get("/viewdata", (req, res) => {
+  res.sendFile(path.join(__dirname, "retrival.html"));
+});
 
 app.post("/data", (req, res) => {
   console.log("request arrived");
