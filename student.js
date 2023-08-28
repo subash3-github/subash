@@ -60,6 +60,22 @@ app.post("/data", (req, res) => {
       console.log(e);
     });
 });
+app.post("/retdata", () => {
+  res.send("request arrived");
+  data
+    .find({
+      rno: req.body.rno,
+    })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  if (!req.body.rno) {
+    res.send("no matches found");
+  }
+});
 
 app.listen(port, () => {
   console.log("server on and running");
