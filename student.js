@@ -57,14 +57,15 @@ app.post("/data", (req, res) => {
     });
   res.send("request arrived");
 });
-app.post("/retdata", () => {
+app.post("/retdata", (req, res) => {
   console.log("request arrived");
-  data
+  console.log(req.body.rno);
+  datamod
     .find({
-      rno: req.body.rno,
+      rollno: req.body.rno,
     })
     .then((result) => {
-      res.send(result);
+      res.send(`<h1>name:${result[0].Name} </h1>`);
     })
     .catch((err) => {
       console.log(err);
