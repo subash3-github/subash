@@ -35,14 +35,13 @@ const datamod = new mongoose.model("model", typ);
 //   })
 // );
 //fetching data to server in formdata format
-function work(event) {
-  event.preventDefault();
-  console.log("ya its work");
-}
+// function work(event) {
+//   event.preventDefault();
+//   console.log("ya its work");
+// }
 app.use(bodyparser.json());
 
 app.post("/data", (req, res) => {
-  res.send("request arrived");
   console.log("request arrived");
   const database = new datamod({
     Name: req.body.name,
@@ -59,9 +58,10 @@ app.post("/data", (req, res) => {
     .catch((e) => {
       console.log(e);
     });
+  res.send("request arrived");
 });
 app.post("/retdata", () => {
-  res.send("request arrived");
+  console.log("request arrived");
   data
     .find({
       rno: req.body.rno,
