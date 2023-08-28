@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "author": "subash",
   "license": "ISC",
   "dependencies": {
