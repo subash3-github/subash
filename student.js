@@ -65,21 +65,21 @@ app.post("/retdata", (req, res) => {
       rollno: req.body.rno,
     })
     .then((result) => {
-      res.send(`
-    
+      if (!result[0]) {
+        res.send("no matches found");
+      } else {
+        res.send(`
         <h1>name:${result[0].Name} </h1>
         <h1>rollno:${result[0].rollno} </h1>
         <h1>dob:${result[0].dob} </h1>
         <h1>dept:${result[0].dept} </h1>
         <h1>year:${result[0].year} </h1>
         `);
+      }
     })
     .catch((err) => {
       console.log(err);
     });
-  if (!req.body.rno) {
-    res.send("no matches found");
-  }
 });
 
 app.listen(port, () => {
